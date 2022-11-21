@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>counter</title>
+     <style>
+.box{
+     width: 50vw;
+     height:50vh;
+     background-color: bisque;
+     padding: 18px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin: auto;
+     margin-top: 10%;
+     border-radius: 18px;
+}
+button{
+     padding: 9px;
+     border-radius: 18px;
+     font-family:Arial, Helvetica, sans-serif;
+     margin: 13px;
+     cursor: pointer;
+}
+button:hover{
+background-color: black;
+color: whitesmoke;
+}
+#result{
+     font-size: 50px;
+}
+
+     </style>
+</head>
+<body>
+     <div class="box">
+          <h1 id="result">0</h1>
+          <div class="buttons">
+            <button id="add">Increment</button>
+            <button id="sub">Decrement</button>
+            <button id="res">Reset</button>
+          </div>
+          
+               <button id="cart">Cart</button>
+               <p id="cartit"></p>
+     
+     </div>
+     <script>
+          let add=document.getElementById("add");
+          let sub=document.getElementById("sub");
+          let res=document.getElementById("res");
+          let result=document.getElementById("result");
+          let i=0;
+          let btn=document.getElementById('cart')
+          let cart = document.getElementById("cartit");
+          let cartArray=[];
+          add.onclick=function(){
+               i++;
+               result.innerHTML=i;
+               cartArray.push(i);
+               cart.style.display='none'
+            }
+          sub.onclick=function(){
+              if(i<=0){
+               cart.style.display='block'
+               cart.innerHTML=`you selected 0 items which is not consider to re cart`
+              }
+              else{
+               i--;
+               result.innerHTML=i;
+               cartArray.pop(i);
+               cart.style.display='none'
+
+                }
+          }
+          res.onclick=function(){
+               i=i*0; 
+               result.innerHTML=i;  
+               cartArray=[];      
+               cart.style.display='none'
+ 
+           }
+           btn.onclick=function(){
+             cart.innerText=`${cartArray.length} items are added`
+             cart.style.display='block'
+ }
+     </script>
+</body>
+</html>
